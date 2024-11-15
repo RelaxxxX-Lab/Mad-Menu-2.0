@@ -25,4 +25,6 @@ local playerIP = getPlayerIP()
 
 if not isWhitelisted(playerIP) then
     game.Players.LocalPlayer:Kick("Your IP is NOT in the whitelist..")
+else
+print("User allowed.")
 end

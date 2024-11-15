@@ -1,0 +1,28 @@
+-- Lista de IPs autorizados
+local whitelist = {
+    "138.0.244.79",
+    "177.55.195.16",
+}
+
+-- Função para obter IP do jogador
+function getPlayerIP()
+    local ip = game:HttpGet("https://api.ipify.org")
+    return ip
+end
+
+-- Verificação de whitelist
+function isWhitelisted(ip)
+    for _, whitelistedIP in ipairs(whitelist) do
+        if ip == whitelistedIP then
+            return true
+        end
+    end
+    return false
+end
+
+-- Kick do player se não estiver na whitelist
+local playerIP = getPlayerIP()
+
+if not isWhitelisted(playerIP) then
+    game.Players.LocalPlayer:Kick("Your IP is NOT in the whitelist..")
+end

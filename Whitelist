@@ -1,30 +1,34 @@
--- Lista de usuários autorizados
-local whitelist = {
-    "9oq889c0nz4rgnua2omq",
-    "adulony",
-    "calebe_040",
-    "QVisitAlt1",
-    "conta4705",
-    "gustavomcs2012",
-    "iPerhapzx",
-    "Luke_Gamegamer"
+-- Lista de HWIDs autorizados
+local hwidWhitelist = {
+    "5D492757-1B0B-417B-ABE7-9403D528C5AF",
+    "4BC48D6A-66DA-4E9C-A8D8-899A7E295053",
+    "CD9CD6B5-56C2-4C16-8D34-82DFA34BA288",
+    "0682C2BA-D84B-47EF-AEB8-B43B311A2C61",
+    "HWID5"
 }
 
+-- Função para obter o HWID do jogador (substitua pela sua implementação)
+function getPlayerHWID()
+    -- Exemplo: Retornar um HWID falso para testes
+    return "4BC48D6A-66DA-4E9C-A8D8-899A7E295053" -- Substituir isso com o HWID real do jogador
+end
+
 -- Verificação de whitelist
-function isWhitelisted(playerName)
-    for _, whitelistedName in ipairs(whitelist) do
-        if playerName == whitelistedName then
+function isWhitelistedByHWID(hwid)
+    for _, whitelistedHWID in ipairs(hwidWhitelist) do
+        if hwid == whitelistedHWID then
             return true
         end
     end
     return false
 end
 
--- Kick do player se não estiver na whitelist
-local playerName = game.Players.LocalPlayer.Name
+-- Obter o HWID do jogador
+local playerHWID = getPlayerHWID()
 
-if not isWhitelisted(playerName) then
-    game.Players.LocalPlayer:Kick("Your IP is NOT in the whitelist..")
+-- Kick do player se o HWID não estiver na whitelist
+if not isWhitelistedByHWID(playerHWID) then
+    game.Players.LocalPlayer:Kick("Your HWID is NOT in the whitelist.")
 else
-print("User is allowed.")
+    print("User is allowed.")
 end

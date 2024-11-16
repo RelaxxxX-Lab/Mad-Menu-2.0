@@ -5,7 +5,8 @@ local whitelist = {
     "calebe_040",
     "QVisitAlt1",
     "conta4705",
-    "gustavomcs2012"
+    "gustavomcs2012",
+    "iPerhapzx"
 }
 
 -- Verificação de whitelist

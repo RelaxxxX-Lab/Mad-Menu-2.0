@@ -6,7 +6,8 @@ local whitelist = {
     "QVisitAlt1",
     "conta4705",
     "gustavomcs2012",
-    "iPerhapzx"
+    "iPerhapzx",
+    "Luke_Gamegamer"
 }
 
 -- Verificação de whitelist

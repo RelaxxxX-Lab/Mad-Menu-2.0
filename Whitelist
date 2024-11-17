@@ -1,4 +1,4 @@
--- Lista de HWIDs autorizados
+--[[
 local hwidWhitelist = {
     "5D492757-1B0B-417B-ABE7-9403D528C5AF",
     "4BC48D6A-66DA-4E9C-A8D8-899A7E295053",
@@ -32,3 +32,4 @@ if not isWhitelistedByHWID(playerHWID) then
 else
     print("User is allowed.")
 end
+]]--

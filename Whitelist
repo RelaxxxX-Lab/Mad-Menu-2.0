@@ -1,3 +1,4 @@
+print("No Whitelist for now...")
 --[[
 local hwidWhitelist = {
     "5D492757-1B0B-417B-ABE7-9403D528C5AF",

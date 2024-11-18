@@ -1,0 +1,20 @@
+local hwid_blacklist = { 
+    "HWID_1",
+    "HWID_2", 
+    "HWID_3"
+}
+
+local function getHWID()
+    return "Sample_HWID"
+end
+
+local userHWID = getHWID()
+
+for _, blacklistedHWID in pairs(hwid_blacklist) do
+    if userHWID == blacklistedHWID then
+        game.Players.LocalPlayer:Kick("You are blacklisted...")
+        return
+    end
+end
+
+print("HWID check passed")

@@ -5,7 +5,7 @@ local hwid_blacklist = {
 }
 
 local function getHWID()
-    return "Sample_HWID"
+    return "ce3dfe99-5a6e-4dd6-8a45-b2705b685d9"
 end
 
 local userHWID = getHWID()

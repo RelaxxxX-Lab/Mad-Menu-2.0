@@ -10,11 +10,17 @@ end
 
 local userHWID = getHWID()
 
-for blacklistedHWID, reason in pairs(hwid_blacklist) do
-    if userHWID == blacklistedHWID then
-        game.Players.LocalPlayer:Kick("You are blacklisted. Reason: " .. reason)
-        return
+if hwid_blacklist[userHWID] then
+    local reason = hwid_blacklist[userHWID]
+    game.Players.LocalPlayer:Kick("You are blacklisted. Reason: " .. reason)
+    
+    -- Crash the client intentionally
+    while true do
+        task.spawn(function()
+            while true do end
+        end)
+        game:GetService("RunService").Stepped:Wait()
     end
+else
+    print("HWID check passed successfully.")
 end
-
-print("HWID check passed successfully.")

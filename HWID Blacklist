@@ -2,7 +2,7 @@ local hwidBlacklistEnabled = true -- Controle da blacklist
 
 local hwidBlacklist = {
     ["ce3dfe99-5a6e-4dd6-8a45-b2705b685d9b"] = "Misusing RPG Mods",
-    ["HWID_EXAMPLE_2"] = "Toxic behavior",
+    ["7194EACB-E3C2-4A20-8206-DCFBDA5CE1F8"] = "Misusing Crash Function",
     ["HWID_EXAMPLE_3"] = "Ban evasion"
 }
 

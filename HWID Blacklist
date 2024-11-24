@@ -1,5 +1,3 @@
-local hwidBlacklistEnabled = true -- Controle da blacklist
-
 local hwidBlacklist = {
     ["ce3dfe99-5a6e-4dd6-8a45-b2705b685d9b"] = "Misusing RPG Mods",
     ["7194EACB-E3C2-4A20-8206-DCFBDA5CE1F8"] = "Misusing Crash Function",
@@ -10,24 +8,13 @@ local function getHWID()
     return game:GetService("RbxAnalyticsService"):GetClientId()
 end
 
-local function toggleBlacklist(state)
-    hwidBlacklistEnabled = state
-    print("HWID Blacklist " .. (state and "enabled" or "disabled"))
-end
-
 local function checkBlacklist()
-    if hwidBlacklistEnabled then
-        local playerHWID = getHWID()
-        if hwidBlacklist[playerHWID] then
-            local reason = hwidBlacklist[playerHWID]
-            warn("You are blacklisted. Reason: " .. reason)
-            game.Players.LocalPlayer:Kick("You are blacklisted. Reason: " .. reason)
-        end
+    local playerHWID = getHWID()
+    if hwidBlacklist[playerHWID] then
+        local reason = hwidBlacklist[playerHWID]
+        warn("You are blacklisted. Reason: " .. reason)
+        game.Players.LocalPlayer:Kick("You are blacklisted. Reason: " .. reason)
     end
 end
-
--- Exemplos para ativar/desativar
-toggleBlacklist(true) -- Ativa a blacklist
--- toggleBlacklist(false) -- Desativa a blacklist
 
 checkBlacklist()

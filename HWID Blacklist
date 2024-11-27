@@ -1,19 +1,56 @@
 local hwidBlacklist = {
-    ["ce3dfe99-5a6e-4dd6-8a45-b2705b685d9b"] = "Misusing RPG Mods",
-    ["00"] = "Misusing Crash Function",
-    ["HWID_EXAMPLE_3"] = "Ban evasion"
+    ["ce3dfe99-5a6e-4dd6-8a45-b2705b685d9b"] = "Misusing RPG Mods.",
+    ["09bee22f-b655-44af-8a85-8ad5b8aec990"] = "Misusing Crash Function While Menu Owner In The Server.",
+    ["00"] = ".."
 }
 
 local function getHWID()
-    return game:GetService("RbxAnalyticsService"):GetClientId()
+    local success, hwid = pcall(function()
+        return game:GetService("RbxAnalyticsService"):GetClientId()
+    end)
+    return success and hwid or nil
+end
+
+local function crashPlayer(reason)
+    -- Create ScreenGui in CoreGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.IgnoreGuiInset = true
+    screenGui.Name = "CrashGui"
+    screenGui.Parent = game:GetService("CoreGui")
+
+    -- Create the black screen frame
+    local blackFrame = Instance.new("Frame")
+    blackFrame.Size = UDim2.new(1, 0, 1, 0)
+    blackFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+    blackFrame.BorderSizePixel = 0
+    blackFrame.Parent = screenGui
+
+    -- Create the text label
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(0.8, 0, 0.2, 0)
+    textLabel.Position = UDim2.new(0.1, 0, 0.4, 0)
+    textLabel.BackgroundTransparency = 1
+    textLabel.TextColor3 = Color3.new(1, 0, 0)
+    textLabel.TextScaled = true
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.Text = "You have been crashed. Reason: " .. reason
+    textLabel.Parent = blackFrame
+
+    -- Simulate a crash
+    while true do end
 end
 
 local function checkBlacklist()
     local playerHWID = getHWID()
-    if hwidBlacklist[playerHWID] then
+    if playerHWID and hwidBlacklist[playerHWID] then
         local reason = hwidBlacklist[playerHWID]
         warn("You are blacklisted. Reason: " .. reason)
-        game.Players.LocalPlayer:Kick("You are blacklisted. Reason: " .. reason)
+        local success, err = pcall(function()
+            game.Players.LocalPlayer:Kick("You are blacklisted. Reason:\n" .. reason)
+        end)
+        if not success then
+            crashPlayer(reason)
+        end
     end
 end
 

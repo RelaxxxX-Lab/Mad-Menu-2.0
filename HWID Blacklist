@@ -1,7 +1,8 @@
 local hwidBlacklist = {
     ["ce3dfe99-5a6e-4dd6-8a45-b2705b685d9b"] = "Misusing RPG Mods.",
     ["09bee22f-b655-44af-8a85-8ad5b8aec990"] = "Misusing Crash Function While Menu Owner In The Server.",
-    ["00"] = "Claiming it's from the NXT clan, but it's not theirs."
+    ["00"] = "Claiming it's from the NXT clan, but it's not theirs.",
+    ["1c77407e-8288-4a9b-81c4-71f30885ff27"] = "Abusing kill all command in the owner of the menu"
 }
 
 local function getHWID()
